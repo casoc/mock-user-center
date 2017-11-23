@@ -1,58 +1,73 @@
-/**
- * BrandBigData.com Inc.
- * Copyright (c) 2016 All Rights Reserved.
- */
 package com.higgs.mockusercenter.domain;
 
 import javax.persistence.*;
 
-/**
- * @author chenshiwei
- * @version $Id: UserDO.java, v 0.1 2017/11/22 15:51 chenshiwei Exp $
- */
-@Entity
 @Table(name = "users")
 public class UserDO {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String username;
-
     private Long amount;
 
+    @Column(name = "frozen_amount")
     private Long frozenAmount;
 
-    public String getUsername() {
-        return username;
-    }
+    private String username;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
-
-    public Long getFrozenAmount() {
-        return frozenAmount;
-    }
-
-    public void setFrozenAmount(Long frozenAmount) {
-        this.frozenAmount = frozenAmount;
-    }
-
+    /**
+     * @return id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return amount
+     */
+    public Long getAmount() {
+        return amount;
+    }
+
+    /**
+     * @param amount
+     */
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * @return frozen_amount
+     */
+    public Long getFrozenAmount() {
+        return frozenAmount;
+    }
+
+    /**
+     * @param frozenAmount
+     */
+    public void setFrozenAmount(Long frozenAmount) {
+        this.frozenAmount = frozenAmount;
+    }
+
+    /**
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

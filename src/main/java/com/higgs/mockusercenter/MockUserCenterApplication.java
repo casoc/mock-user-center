@@ -8,13 +8,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @ImportResource({ "classpath:bytetcc-supports-springcloud.xml" })
 @Import(SpringCloudConfiguration.class)
 @SpringBootApplication
 @EnableEurekaClient
-@EnableJpaRepositories
 @EnableCircuitBreaker
 @EnableHystrix
 public class MockUserCenterApplication {

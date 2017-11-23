@@ -4,13 +4,13 @@
  */
 package com.higgs.mockusercenter.service;
 
+import com.higgs.mockusercenter.dao.UserDOMapper;
 import org.bytesoft.compensable.Compensable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.higgs.mockusercenter.dao.UserDAO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -26,13 +26,13 @@ public class UserServiceImpl implements UserService {
     private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDOMapper userDOMapper;
 
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("try increase amount userId:{}, amount:{}", userId, amount);
-        userDAO.tryIncreaseAmount(userId, amount);
-        throw new RuntimeException("ERROR");
+        userDOMapper.tryIncreaseAmount(userId, amount);
+        //throw new RuntimeException("ERROR");
     }
 }

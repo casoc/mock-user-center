@@ -4,12 +4,12 @@
  */
 package com.higgs.mockusercenter.service;
 
+import com.higgs.mockusercenter.dao.UserDOMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.higgs.mockusercenter.dao.UserDAO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -22,12 +22,12 @@ public class UserServiceCancel implements UserService {
     private final Logger logger = LoggerFactory.getLogger(UserServiceCancel.class);
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDOMapper userDOMapper;
 
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("cancel increase amount userId:{}, amount:{}", userId, amount);
-        userDAO.cancelIncreaseAmount(userId, amount);
+        userDOMapper.cancelIncreaseAmount(userId, amount);
     }
 }
