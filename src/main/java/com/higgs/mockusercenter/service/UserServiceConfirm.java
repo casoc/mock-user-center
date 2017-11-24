@@ -25,10 +25,10 @@ public class UserServiceConfirm implements UserService {
     private UserDOMapper userDOMapper;
 
     @Override
-    @Transactional(rollbackFor = RuntimeException.class)
+    @Transactional(rollbackFor = Exception.class)
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("confirm increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.confirmIncreaseAmount(userId, amount);
-//        throw new RuntimeException("error");
+//        throw new RuntimeException("ERROR");
     }
 }

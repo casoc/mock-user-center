@@ -25,7 +25,7 @@ public class UserServiceCancel implements UserService {
     private UserDOMapper userDOMapper;
 
     @Override
-    @Transactional(rollbackFor = RuntimeException.class)
+    @Transactional(rollbackFor = Exception.class)
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("cancel increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.cancelIncreaseAmount(userId, amount);

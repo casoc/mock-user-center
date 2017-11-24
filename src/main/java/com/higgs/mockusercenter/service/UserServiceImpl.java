@@ -29,10 +29,10 @@ public class UserServiceImpl implements UserService {
     private UserDOMapper userDOMapper;
 
     @Override
-    @Transactional(rollbackFor = RuntimeException.class)
+    @Transactional(rollbackFor = Exception.class)
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("try increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.tryIncreaseAmount(userId, amount);
-        //throw new RuntimeException("ERROR");
+//        throw new RuntimeException("ERROR");
     }
 }
