@@ -22,15 +22,12 @@ public class UserServiceConfirm implements UserService {
 
     @Autowired
     private UserDOMapper userDOMapper;
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
 
     @Override
     @Transactional
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("confirm increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.confirmIncreaseAmount(userId, amount);
-//        int value = this.jdbcTemplate.update("UPDATE users SET frozen_amount = frozen_amount - ?, amount = amount + ? WHERE id = ?", amount, amount, userId);
-//        throw new RuntimeException("ERROR");
+        //        throw new RuntimeException("ERROR");
     }
 }

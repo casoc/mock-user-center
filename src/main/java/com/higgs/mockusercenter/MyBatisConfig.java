@@ -7,6 +7,7 @@ package com.higgs.mockusercenter;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.bytesoft.bytejta.supports.jdbc.LocalXADataSource;
 import org.bytesoft.bytetcc.supports.springcloud.config.SpringCloudConfiguration;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +22,11 @@ import javax.sql.DataSource;
  */
 @Import(SpringCloudConfiguration.class)
 @Configuration
+@MapperScan("com.higgs.mockusercenter.dao")
 public class MyBatisConfig {
 
     @Autowired
     private Environment env;
-
-//    @Autowired
-//    private TransactionManagerImpl transactionManager;
 
     @Bean(name = "mybatisDataSource")
     public DataSource getDataSource() {
@@ -44,12 +43,5 @@ public class MyBatisConfig {
         bds.setPassword(env.getProperty("spring.datasource.password"));
         return bds;
     }
-
-//    @Bean
-//    public JdbcTemplate getJdbcTemplate() {
-//        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-//        jdbcTemplate.setDataSource(this.getDataSource());
-//        return jdbcTemplate;
-//    }
 
 }

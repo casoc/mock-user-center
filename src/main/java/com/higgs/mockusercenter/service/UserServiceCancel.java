@@ -22,14 +22,11 @@ public class UserServiceCancel implements UserService {
 
     @Autowired
     private UserDOMapper userDOMapper;
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
 
     @Override
     @Transactional
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("cancel increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.cancelIncreaseAmount(userId, amount);
-//        int value = this.jdbcTemplate.update("UPDATE users SET frozen_amount = frozen_amount - ? WHERE id = ?", amount, userId);
     }
 }
