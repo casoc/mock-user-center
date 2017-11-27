@@ -4,13 +4,14 @@
  */
 package com.higgs.mockusercenter.controller;
 
-import com.higgs.mockusercenter.service.UserService;
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import com.higgs.mockusercenter.service.UserService;
 
 /**
  * @author chenshiwei

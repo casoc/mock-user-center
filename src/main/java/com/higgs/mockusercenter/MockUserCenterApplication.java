@@ -1,23 +1,17 @@
 package com.higgs.mockusercenter;
 
-import org.bytesoft.bytetcc.supports.springcloud.config.SpringCloudConfiguration;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ImportResource;
 
-@ImportResource({ "classpath:bytetcc-supports-springcloud.xml" })
-@Import(SpringCloudConfiguration.class)
-@SpringBootApplication
-@EnableEurekaClient
-@EnableCircuitBreaker
-@EnableHystrix
+@ImportResource({ "classpath:bytetcc-supports-springcloud.xml", "classpath:spring-mybatis.xml" })
+@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = "com.higgs.mockusercenter")
 public class MockUserCenterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MockUserCenterApplication.class, args);
+		new SpringApplicationBuilder(MockUserCenterApplication.class).bannerMode(Banner.Mode.OFF).web(true).run(args);
 	}
 }

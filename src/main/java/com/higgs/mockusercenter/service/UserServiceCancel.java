@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -23,11 +22,14 @@ public class UserServiceCancel implements UserService {
 
     @Autowired
     private UserDOMapper userDOMapper;
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("cancel increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.cancelIncreaseAmount(userId, amount);
+//        int value = this.jdbcTemplate.update("UPDATE users SET frozen_amount = frozen_amount - ? WHERE id = ?", amount, userId);
     }
 }

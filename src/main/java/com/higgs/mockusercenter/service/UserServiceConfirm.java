@@ -4,13 +4,12 @@
  */
 package com.higgs.mockusercenter.service;
 
+import com.higgs.mockusercenter.dao.UserDOMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.higgs.mockusercenter.dao.UserDOMapper;
 
 /**
  * @author chenshiwei
@@ -23,12 +22,15 @@ public class UserServiceConfirm implements UserService {
 
     @Autowired
     private UserDOMapper userDOMapper;
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void increaseAmount(Integer userId, Long amount) {
         logger.error("confirm increase amount userId:{}, amount:{}", userId, amount);
         userDOMapper.confirmIncreaseAmount(userId, amount);
+//        int value = this.jdbcTemplate.update("UPDATE users SET frozen_amount = frozen_amount - ?, amount = amount + ? WHERE id = ?", amount, amount, userId);
 //        throw new RuntimeException("ERROR");
     }
 }
