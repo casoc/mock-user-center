@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @author chenshiwei
  * @version $Id: UserController.java, v 0.1 2017/11/22 15:57 chenshiwei Exp $
  */
-@Compensable(interfaceClass = UserService.class, confirmableKey = "userServiceConfirm", cancellableKey = "userServiceCancel")
+@Compensable(interfaceClass = UserService.class)
 @RestController
 public class UserController {
 

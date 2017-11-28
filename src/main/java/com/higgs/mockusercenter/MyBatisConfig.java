@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  */
 @Import(SpringCloudConfiguration.class)
 @Configuration
-@MapperScan("com.higgs.mockusercenter.dao")
+@MapperScan(basePackages = "com.higgs.mockusercenter.dao")
 public class MyBatisConfig {
 
     @Autowired

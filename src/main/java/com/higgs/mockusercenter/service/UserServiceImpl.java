@@ -4,19 +4,21 @@
  */
 package com.higgs.mockusercenter.service;
 
-import com.higgs.mockusercenter.dao.UserDOMapper;
+import org.bytesoft.compensable.Compensable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.higgs.mockusercenter.dao.UserDOMapper;
+
 /**
  * @author chenshiwei
  * @version $Id: UserServiceImpl.java, v 0.1 2017/11/22 15:55 chenshiwei Exp $
  */
 @Service("userService")
-//@Compensable(interfaceClass = UserService.class, confirmableKey = "userServiceConfirm", cancellableKey = "userServiceCancel")
+@Compensable(interfaceClass = UserService.class, confirmableKey = "userServiceConfirm", cancellableKey = "userServiceCancel")
 public class UserServiceImpl implements UserService {
 
     private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
